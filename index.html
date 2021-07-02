@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Reactive Art Piece" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timescape</title>
+    <link rel="icon" href="icon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="main.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Timescape</h1>
+    </header>
+    <div id="bg">
+
+      <!--
+        separated night and day sky elements
+        so stars render beneath cosmos element,
+        but clouds render above cosmos element .
+      -->
+      <div id="night-sky"></div>
+      <div id="cosmos">
+        <span id="sun"></span>
+        <span id="moon"></span>
+      </div>
+      <div id="day-sky"></div>
+
+      <script>
+        // generate stars
+        var night_sky = document.getElementById("night-sky");
+        for (i=0; i<150; i++) {
+          var star = document.createElement("span");
+          star.classList.add("star");
+          var rand_x = Math.floor(Math.random() * 100) + "%";
+          var rand_y = Math.floor(Math.random() * 50) + "%";
+          var rand_size = Math.floor(Math.random() * 3) + 3 + "px";
+          var rand_opacity = Math.random();
+          var rand_anim_delay = Math.floor(Math.random() * -5) + "s";
+          star.style.left = rand_x;
+          star.style.top = rand_y;
+          star.style.width = rand_size;
+          star.style.height = rand_size;
+          if (i%2 == 0) {
+            star.style.opacity = rand_opacity;
+          } else {
+            star.style.animationDelay = rand_anim_delay;
+          }
+          night_sky.insertAdjacentElement("beforeend", star);
+        }
+        // generate clouds
+        var day_sky = document.getElementById("day-sky");
+        for (i=0; i<25; i++) {
+          var cloud = document.createElement("span");
+          cloud.classList.add("cloud");
+          var rand_y = Math.floor(Math.random() * 50) + 50 + "%";
+          var rand_size = Math.floor(Math.random() * 100) + 25 + "px";
+          var rand_opacity = Math.random();
+          var rand_anim_delay = Math.floor(Math.random() * -120) + "s";
+          cloud.style.top = rand_y;
+          cloud.style.width = rand_size;
+          cloud.style.height = rand_size;
+          cloud.style.opacity = rand_opacity;
+          cloud.style.animationDelay = rand_anim_delay;
+          day_sky.insertAdjacentElement("beforeend", cloud);
+        }
+      </script>
+
+      <div id="land"></div>
+    </div>
+    <footer>
+      <!-- <div id="time-text">00:00</div> -->
+      <!-- <input type="range" id="time-slider" min="0" max="1440"> -->
+      <div id="time-text" onclick="setCurrentTime()">00:00</div>
+      <input type="range" id="time-slider" min="0" max="1440" oninput="updateSlider(this.value)" onchange="updateSlider(this.value)">
+    </footer>
+  </body>
+</html>

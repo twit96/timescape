@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --sky-blue: #87ceeb;
+  --evening-sky: #474a57;
+  --sunset-orange: #fd6051;
+}
+
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0.5em 1em;
+}
+
+header h1 {
+  font-size: 1em;
+}
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: var(--sky-blue);
+}
+
+
+#night-sky,
+#day-sky {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 115vmax;
+  height: 150vmax;
+  transition: 0.25s transform ease;
+}
+
+#night-sky .star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  z-index: -1;
+}
+#night-sky .star:nth-of-type(2n) {
+  animation: star-twinkle 5s linear infinite;
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 1; }
+}
+
+#day-sky .cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: cloud-drift 120s linear infinite;
+}
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  background: white;
+  border-radius: 50%;
+}
+.cloud::before { left: -25%;}
+.cloud::after { right: -25%; }
+
+@keyframes cloud-drift {
+  0% { right: 0; }
+  100% { right: 110vw; }
+}
+
+
+#cosmos {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 115vmax;
+  height: 115vmax;
+}
+
+#sun {
+  width: 10%;
+  height: 10%;
+  background: yellow;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+
+#moon {
+  width: 10%;
+  height: 10%;
+  background: lightgrey;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+
+#land {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 30vh;
+  background: #2e782e;
+  clip-path: ellipse(90% 60% at 50% 60%);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0.5em 1em;
+}
+
+#time-text {
+  cursor: pointer;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+footer input {
+  width: 100%;
+  max-width: 500px;
+}

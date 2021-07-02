@@ -25,6 +25,21 @@
       <div id="cosmos">
         <span id="sun"></span>
         <span id="moon"></span>
+        <script>
+          var moon = document.getElementById("moon");
+          for (i=0; i<25; i++) {
+            var crater = document.createElement("span");
+            crater.classList.add("crater");
+            var rand_x = Math.floor(Math.random() * 100) + "%";
+            var rand_y = Math.floor(Math.random() * 100) + "%";
+            var rand_size = Math.floor(Math.random() * 4) + 1 + "%";
+            crater.style.left = rand_x;
+            crater.style.top = rand_y;
+            crater.style.width = rand_size;
+            crater.style.height = rand_size;
+            moon.insertAdjacentElement("beforeend", crater);
+          }
+        </script>
       </div>
       <div id="day-sky"></div>
 

@@ -33,6 +33,7 @@ header h1 {
   height: 100vh;
   z-index: -1;
   background: var(--sky-blue);
+  transition: 0.25s background ease;
 }
 
 
@@ -99,6 +100,7 @@ header h1 {
   width: 10%;
   height: 10%;
   background: yellow;
+  box-shadow: 0 0 10px 2px yellow;
   position: absolute;
   bottom: 50px;
   left: 50%;
@@ -110,11 +112,19 @@ header h1 {
   width: 10%;
   height: 10%;
   background: lightgrey;
+  box-shadow: 0 0 10px 2px lightgrey;
   position: absolute;
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
+  overflow: hidden;
+}
+
+#moon .crater {
+  position: absolute;
+  border-radius: 50%;
+  background: gray;
 }
 
 #land {

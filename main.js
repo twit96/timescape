@@ -40,7 +40,7 @@ function setCurrentTime() {
 
   // set recursive callback timeout based on seconds value
   var delay = (60-sec) * 1000;
-  // setTimeout(setCurrentTime, delay);
+  setTimeout(setCurrentTime, delay);
 }
 // initial call
 setCurrentTime();
@@ -66,12 +66,20 @@ function setCosmos() {
   if ((rotation > 90) && (rotation < 270)) {
     night_sky.style.transform = "translateX(-50%) rotate(180deg)";
     day_sky.style.transform = "translateX(-50%) rotate(180deg)";
+    tempBgChange("day");
   } else {
     night_sky.style.transform = "translateX(-50%) rotate(0)";
     day_sky.style.transform = "translateX(-50%) rotate(0)";
+    tempBgChange("night");
   }
-  // if (rotation < 370) {
-  //   setTimeout(setCosmos, 50);
-  // }
 }
-// setCosmos();
+
+function tempBgChange(day_night) {
+  var bg = document.getElementById("bg");
+  if (day_night == "day") {
+    bg.style.background = "var(--sky-blue)";
+  } else {
+    bg.style.background = "black";
+  }
+
+}

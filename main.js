@@ -45,7 +45,7 @@ function setCurrentTime() {
 
   // set recursive callback timeout based on seconds value
   var delay = (60-sec) * 1000;
-  // setTimeout(setCurrentTime, delay);
+  setTimeout(setCurrentTime, delay);
 }
 // initial call
 setCurrentTime();

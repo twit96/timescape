@@ -1,7 +1,12 @@
 var time_text = document.getElementById("time-text");
 var time_slider = document.getElementById("time-slider");
-// time_slider.disabled = true;
 var time_val;
+
+var bg = document.getElementById("bg");
+var night_sky = document.getElementById("night-sky");
+var cosmos = document.getElementById("cosmos");
+var day_sky = document.getElementById("day-sky");
+
 
 function getCurrentTime() {
   var date = new Date();
@@ -40,7 +45,7 @@ function setCurrentTime() {
 
   // set recursive callback timeout based on seconds value
   var delay = (60-sec) * 1000;
-  setTimeout(setCurrentTime, delay);
+  // setTimeout(setCurrentTime, delay);
 }
 // initial call
 setCurrentTime();
@@ -55,27 +60,24 @@ function updateSlider(val) {
 }
 
 
+
 var rotation = 0;
 function setCosmos() {
-  var cosmos = document.getElementById("cosmos");
   var rotation = time_val / 1440 * 360;
   cosmos.style.transform = "translateX(-50%) rotate(" + rotation + "deg)";
 
-  var night_sky = document.getElementById("night-sky");
-  var day_sky = document.getElementById("day-sky");
   if ((rotation > 90) && (rotation < 270)) {
     night_sky.style.transform = "translateX(-50%) rotate(180deg)";
     day_sky.style.transform = "translateX(-50%) rotate(180deg)";
-    tempBgChange("day");
+    tempColorChange("day");
   } else {
     night_sky.style.transform = "translateX(-50%) rotate(0)";
     day_sky.style.transform = "translateX(-50%) rotate(0)";
-    tempBgChange("night");
+    tempColorChange("night");
   }
 }
 
-function tempBgChange(day_night) {
-  var bg = document.getElementById("bg");
+function tempColorChange(day_night) {
   if (day_night == "day") {
     bg.style.background = "var(--sky-blue)";
   } else {

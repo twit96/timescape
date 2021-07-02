@@ -83,7 +83,7 @@ header h1 {
 
 @keyframes cloud-drift {
   0% { right: 0; }
-  100% { right: 110vw; }
+  100% { right: 100%; }
 }
 
 
@@ -150,6 +150,7 @@ footer {
   cursor: pointer;
   font-size: 3rem;
   margin-bottom: 1rem;
+  color: white;
 }
 
 footer input {
